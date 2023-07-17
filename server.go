@@ -226,6 +226,7 @@ func (server *Server) handleRequest(cc codec.Codec, req *request, sending *sync.
 		<-sent
 		return
 	}
+
 	select {
 	case <-time.After(timeout):
 		req.h.Error = fmt.Sprintf("rpc server:request handle timeout:expect within %s", timeout)
